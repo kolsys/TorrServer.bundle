@@ -1,0 +1,8 @@
+[
+  {
+        "id": "server",
+        "type": "text",
+        "label": "TorrServer HTTP-address",
+        "default": ""
+    }
+]
