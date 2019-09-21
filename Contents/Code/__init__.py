@@ -58,6 +58,12 @@ def ValidateServer():
     return Prefs['server'] and SERVER_RE.match(Prefs['server'])
 
 
+def GetLink(file):
+    if 'Play' in file:
+        return file['Play']
+    return file['Link']
+
+
 @handler(PREFIX, TITLE, thumb=ICON)
 def MainMenu():
 
@@ -88,7 +94,7 @@ def MainMenu():
             ))
         else:
             file = item['Files'][0]
-            oc.add(GetVideoObject(server+file['Link'], file['Name']))
+            oc.add(GetVideoObject(server+GetLink(file), file['Name']))
 
     return oc
 
@@ -117,7 +123,7 @@ def List(hash):
 
     server = GetServerUrl()
     for file in item['Files']:
-        oc.add(GetVideoObject(server+file['Link'], file['Name']))
+        oc.add(GetVideoObject(server+GetLink(file), file['Name']))
 
     if not len(oc):
         return NoContents()
@@ -134,6 +140,8 @@ def VideoPlay(uri, title, **kwargs):
 
 
 def GetVideoObject(uri, title):
+    uri = u'%s' % uri
+    title = u'%s' % title
     return VideoClipObject(
         key=Callback(
             VideoPlay,
@@ -141,7 +149,7 @@ def GetVideoObject(uri, title):
             title=title
         ),
         rating_key=uri,
-        title=u'%s' % title,
+        title=title,
         source_title=TITLE,
         items=[
             MediaObject(
