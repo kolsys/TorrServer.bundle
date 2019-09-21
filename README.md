@@ -1,7 +1,7 @@
 TorrServer for Plex plugin
 =====
 
-[TorrServer](https://github.com/YouROK/TorrServe) client plugin for [Plex Media Server](http://plex.tv/).
+[TorrServer](https://github.com/YouROK/TorrServer) client plugin for [Plex Media Server](http://plex.tv/).
 
 
 Installation
