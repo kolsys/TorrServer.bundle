@@ -34,7 +34,7 @@ ART = 'art-default.jpg'
 ICON = 'icon-default.png'
 TITLE = 'TorrServer'
 
-SERVER_RE = Regex('^https?://[^/:]+(:[0-9]{1,5})?$')
+SERVER_RE = Regex('^(https|http)?://[^/:]+(:[0-9]{1,5})?$')
 
 
 def Start():
